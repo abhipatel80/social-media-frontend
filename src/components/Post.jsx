@@ -131,7 +131,7 @@ const Post = ({ val, loading }) => {
             <LazyImage
               src={`${url}${val.postImage}`}
               alt="Post"
-              className="w-full h-64 max-h-72 img-cover rounded-lg"
+              className="w-full h-64 max-h-72 img-cover md:rounded-lg rounded-sm"
             />
           )}
           <div className="px-4 py-2">

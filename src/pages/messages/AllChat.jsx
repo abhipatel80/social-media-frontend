@@ -41,7 +41,7 @@ const AllChat = () => {
 
   return (
     <div className="w-full border h-screen lg:p-3 p-1">
-      <div className="md:hidden flex">
+      <div className="flex">
         <NavLink to="/" className="flex">
           <KeyboardBackspaceIcon />
           <p className="ml-2 font-semibold">Back</p>

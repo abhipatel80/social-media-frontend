@@ -88,7 +88,7 @@ const Post = ({ val, loading }) => {
   return (
     <>
       <div
-        className="md:w-[30rem] sm:w-[24rem] shadow-sm overflow-auto w-full flex max-w-screen-md mx-auto"
+        className="md:w-[30rem] sm:w-[24rem] shadow-sm w-full flex max-w-screen-md mx-auto"
         key={val?._id}
       >
         <div className="bg-white rounded-lg mt-2">
@@ -131,7 +131,7 @@ const Post = ({ val, loading }) => {
             <LazyImage
               src={`${url}${val.postImage}`}
               alt="Post"
-              className="w-full h-auto min-h-full max-h-64 img-cover rounded-lg"
+              className="w-full h-64 max-h-72 img-cover rounded-lg"
             />
           )}
           <div className="px-4 py-2">

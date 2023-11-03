@@ -88,21 +88,15 @@ const Profile = () => {
                 ) : !isFollow ? (
                   <button
                     onClick={follow}
-                    className="md:ml-20 ml-8 font-normal tracking-wide bg-blue-600 hover:bg-blue-700 text-white md:text-sm text-xs rounded-md py-1.5 px-3"
+                    className="md:ml-20 ml-4 font-normal tracking-wide bg-blue-600 hover:bg-blue-700 text-white md:text-sm text-xs rounded-md py-1.5 px-3"
                   >
-                    <span>
-                      <i className="fa-solid fa-plus"></i>
-                    </span>
                     Follow
                   </button>
                 ) : (
                   <button
                     onClick={unfollow}
-                    className="md:ml-20 ml-8 font-normal tracking-wide bg-blue-600 hover:bg-blue-700 text-white md:text-sm text-xs rounded-md py-1.5 px-3"
+                    className="md:ml-20 ml-4 font-normal tracking-wide bg-blue-600 hover:bg-blue-700 text-white md:text-sm text-xs rounded-md py-1.5 px-3"
                   >
-                    <span>
-                      <i className="fa-solid fa-plus"></i>
-                    </span>
                     Unfollow
                   </button>
                 )}

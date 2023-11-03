@@ -12,11 +12,11 @@ const Comment = ({ data }) => {
   };
 
   return (
-    <div className="comment h-[19rem]">
+    <div className="comment md:h-[19rem] h-[13rem]">
       {data?.comments?.map((comment, id) => {
         return (
           <div key={id}>
-            <div className="header flex mt-3 items-center ml-8">
+            <div className="header flex mt-3 items-center ml-2">
               {data?.postImage === undefined ? (
                 <PostSkeleton />
               ) : (

@@ -117,7 +117,7 @@ const Dialog = ({ val }) => {
                   )}
                 </div>
                 <div className="post-caption flex flex-col lg:mt-0 mt-8">
-                  <div className="header flex mb-3 items-center ml-8">
+                  <div className="header flex mb-3 items-center ml-2">
                     {data?.userId?.userImage === undefined || loading ? (
                       <UserSkeleton />
                     ) : (

@@ -66,7 +66,7 @@ const Dialog = ({ val }) => {
               <LazyImage
                 src={`${url}${val?.postImage}`}
                 alt="user post"
-                className="md:w-80 md:h-48 h-40 w-40 m-1 cursor-pointer img-cover rounded-md"
+                className="md:w-80 md:h-48 h-32 w-40 m-2 cursor-pointer img-cover rounded-md"
               />
             )}
           </div>

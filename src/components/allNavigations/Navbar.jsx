@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getSearchAsync } from "../../store/userSlice";
 import { logout, url } from "../../api/userapi";
+import LazyImage from "../LazyImage";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -34,7 +35,7 @@ const Navbar = () => {
       <nav className="shadow-md bg-white fixed top-0 w-full">
         <ul className="flex p-3">
           <NavLink to="/">
-            <h2 className="md:text-2xl text-xl ml-4 cursor-pointer mr-4 mb-1">
+            <h2 className="md:text-2xl text-xl ml-4 cursor-pointer mr-4 mb-1 md:block hidden">
               Interwave
             </h2>
           </NavLink>
@@ -84,7 +85,7 @@ const Navbar = () => {
                     backgroundColor: "white",
                     padding: "10px",
                     color: "black",
-                    width: "26rem",
+                    width: "18rem",
                     boxShadow: "0px 2px 20px 0px #e4e4e4",
                     left: "0",
                     borderRadius: 4,
@@ -106,8 +107,8 @@ const Navbar = () => {
                                 key={val._id}
                                 onClick={() => setShow(false)}
                               >
-                                <div className="flex items-center m-3">
-                                  <img
+                                <div className="flex items-center md:m-3 m-1.5">
+                                  <LazyImage
                                     src={`${url}${val.userImage}`}
                                     alt="User Profile"
                                     className="w-10 h-10 rounded-full mr-4 img-cover"

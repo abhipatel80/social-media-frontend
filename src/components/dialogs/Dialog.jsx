@@ -54,7 +54,7 @@ const Dialog = ({ val }) => {
   return (
     <>
       <div>
-        <div className="relative">
+        <div className="relative m-2">
           <div
             data-bs-toggle="modal"
             onClick={() => getpostdata(val._id)}

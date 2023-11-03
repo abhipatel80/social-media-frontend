@@ -48,11 +48,11 @@ const HomePost = () => {
 
   if (loading) {
     return <Loading />;
-  };
+  }
 
   return (
     <>
-      <div className="flex items-center justify-center bg-gray-50 pt-20 h-screen">
+      <div className="flex items-center justify-center bg-gray-50 md:pt-20 pt-12 h-screen">
         <div
           className={`bg-white p-4 rounded shadow-sm ${
             followCondition ? "lg:w-[25rem]" : ""

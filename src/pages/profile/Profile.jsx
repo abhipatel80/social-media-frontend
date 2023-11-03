@@ -83,9 +83,7 @@ const Profile = () => {
               <span>
                 {id === userId ? (
                   <NavLink to="/editprofile">
-                    {/* <button className="md:ml-20 ml-8 font-normal tracking-wide bg-blue-600 hover:bg-blue-700 text-white md:text-sm text-small rounded-md py-1.5 px-3"> */}
-                    <i className="fa-solid font-normal hover:text-green-500 fa-xl fa-pen-to-square md:ml-20 ml-8"></i>
-                    {/* </button> */}
+                    <i className="fa-solid font-normal hover:text-green-500 fa-pen-to-square md:ml-20 ml-8"></i>
                   </NavLink>
                 ) : !isFollow ? (
                   <button

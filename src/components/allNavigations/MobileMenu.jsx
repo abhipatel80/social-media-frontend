@@ -8,7 +8,7 @@ const MobileMenu = () => {
         <>
             <div className="flex justify-items-center">
                 <div
-                    className="main-menu mobile-menu flex justify-between w-screen px-4 py-2 absolute bg-white font-semibold"
+                    className="main-menu mobile-menu shadow-lg flex justify-between w-screen px-4 py-2 absolute bg-white font-semibold"
                 >
                     <NavLink to="/">
                         <div className="menu-mobile">

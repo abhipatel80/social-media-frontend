@@ -107,7 +107,7 @@ const Navbar = () => {
                                 key={val._id}
                                 onClick={() => setShow(false)}
                               >
-                                <div className="flex items-center md:m-3 m-1.5">
+                                <div className="flex items-center md:m-3 mx-1.5 my-4">
                                   <LazyImage
                                     src={`${url}${val.userImage}`}
                                     alt="User Profile"

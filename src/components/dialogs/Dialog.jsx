@@ -54,7 +54,7 @@ const Dialog = ({ val }) => {
   return (
     <>
       <div>
-        <div className="relative m-2">
+        <div className="relative">
           <div
             data-bs-toggle="modal"
             onClick={() => getpostdata(val._id)}
@@ -66,7 +66,7 @@ const Dialog = ({ val }) => {
               <LazyImage
                 src={`${url}${val?.postImage}`}
                 alt="user post"
-                className="md:w-80 md:h-48 h-40 w-40 cursor-pointer img-cover rounded-md"
+                className="md:w-80 md:h-48 h-40 w-40 m-1 cursor-pointer img-cover rounded-md"
               />
             )}
           </div>

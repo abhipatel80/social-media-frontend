@@ -139,7 +139,7 @@ const MobileSingleChat = () => {
             </button>
           </div>
         </div>
-        <div className="w-full bg-gray-100 h-[32.1rem] overflow-auto">
+        <div className="w-full bg-gray-100 h-[29rem] overflow-auto">
           {messages?.map((val, i) => {
             return (
               <div key={i}>

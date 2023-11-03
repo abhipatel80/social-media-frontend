@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const url = "https://social-media-app-backend-delta.vercel.app";
 // export const url = "http://localhost:4000";
@@ -7,45 +7,75 @@ const token = localStorage.getItem("token");
 const id = localStorage.getItem("userId");
 
 export const headers = {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`,
-}
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
 
 export const imageheaders = {
-    "Authorization": `Bearer ${token}`,
-}
+  Authorization: `Bearer ${token}`,
+};
 
 export const register = async (formData) => {
+  try {
     const { data } = await axios.post(`${url}/user/register`, formData);
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const login = async (formData) => {
+  try {
     const { data } = await axios.post(`${url}/user/login`, formData);
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const logout = async () => {
+  try {
     const { data } = await axios.delete(`${url}/user/logout`, { headers });
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const getsingleuser = async (id) => {
+  try {
     const { data } = await axios.get(`${url}/user/${id}`, { headers });
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const editUser = async (formData) => {
-    const { data } = await axios.put(`${url}/user/edit/${id}`, formData, { headers: imageheaders })
+  try {
+    const { data } = await axios.put(`${url}/user/edit/${id}`, formData, {
+      headers: imageheaders,
+    });
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const searchUser = async (name) => {
-    const { data } = await axios.get(`${url}/user?name=${name}`, { headers })
+  try {
+    const { data } = await axios.get(`${url}/user?name=${name}`, { headers });
     return data;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const allUser = async () => {
-    const { data } = await axios.get(`${url}/user/`, { headers })
+  try {
+    const { data } = await axios.get(`${url}/user/`, { headers });
     return data;
+  } catch (e) {
+    return e;
+  }
 };

@@ -100,6 +100,7 @@ const postSlice = createSlice({
     builder.addCase(getPostAsync.pending, (state, action) => {
       state.loading = true;
     });
+
     builder.addCase(getMyPostAsync.pending, (state, action) => {
       state.loading = true;
     });

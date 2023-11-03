@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
 import LazyImage from "../LazyImage";
 import UserSkeleton from "../skeletons/UserSkeleton";
+import { url } from "../../api/userapi";
 
 const FollowerDialog = ({ val }) => {
   const [isFollow, setisFollow] = useState(false);

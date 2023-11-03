@@ -10,7 +10,7 @@ const Explore = () => {
   const [page, setpage] = useState(1);
 
   const dispatch = useDispatch();
-  const { allPosts: data } = useSelector((state) => state.post);
+  const { allPosts: data, loading } = useSelector((state) => state.post);
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -18,7 +18,7 @@ const Explore = () => {
   const fetchData = () => {
     setpage((page) => page + 2);
     if (page > 2) {
-        dispatch(addNewPost(...data));
+      dispatch(addNewPost(...data));
     }
     dispatch(getPostAsync(page));
   };
@@ -37,6 +37,10 @@ const Explore = () => {
     }
     // eslint-disable-next-line
   }, [token]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="pt-20 bg-gray-50 h-screen overflow-auto">

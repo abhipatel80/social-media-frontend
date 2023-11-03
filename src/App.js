@@ -1,8 +1,8 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import MobileMenu from "./components/MobileMenu";
+import Navbar from "./components/allNavigations/Navbar";
+import Sidebar from "./components/allNavigations/Sidebar";
+import MobileMenu from "./components/allNavigations/MobileMenu";
 import Loading from "./components/Loading";
 import { Suspense, lazy } from "react";
 

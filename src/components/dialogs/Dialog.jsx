@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSinglePostAsync } from "../store/postSlice";
-import { addCommentAsync } from "../store/commentSlice";
-import Comment from "./Comment";
+import { getSinglePostAsync } from "../../store/postSlice";
+import { addCommentAsync } from "../../store/commentSlice";
+import Comment from "../Comment";
 import { NavLink } from "react-router-dom";
-import { deletePost } from "../api/postapi";
-import { addLike, deleteLike, isLikedPost } from "../api/likeapi";
+import { deletePost } from "../../api/postapi";
+import { addLike, deleteLike, isLikedPost } from "../../api/likeapi";
+import LazyImage from "../LazyImage";
+import PostSkeleton from "../skeletons/PostSkeleton";
+import UserSkeleton from "../skeletons/UserSkeleton";
 
 const Dialog = ({ val }) => {
   const [comment, setcomment] = useState("");
   const [isLike, setisLike] = useState(false);
 
-  const { singlePost: data } = useSelector((state) => state.post);
+  const { singlePost: data, loading } = useSelector((state) => state.post);
 
   const dispatch = useDispatch();
 
@@ -56,11 +59,15 @@ const Dialog = ({ val }) => {
             onClick={() => getpostdata(val._id)}
             data-bs-target="#postModal"
           >
-            <img
-              src={`http://localhost:4000${val?.postImage}`}
-              alt="user post"
-              className="md:w-80 md:h-48 h-40 w-40 cursor-pointer img-cover rounded-md"
-            />
+            {val.postImage === undefined || loading ? (
+              <PostSkeleton />
+            ) : (
+              <LazyImage
+                src={`http://localhost:4000${val?.postImage}`}
+                alt="user post"
+                className="md:w-80 md:h-48 h-40 w-40 cursor-pointer img-cover rounded-md"
+              />
+            )}
           </div>
           {val.userId._id === userId ? (
             <>
@@ -98,19 +105,27 @@ const Dialog = ({ val }) => {
                   >
                     <i className="fa-solid fa-circle-xmark fa-2xl"></i>
                   </div>
-                  <img
-                    src={`http://localhost:4000${data?.postImage}`}
-                    alt="userpost"
-                    className="lg:h-[34rem] cursor-pointer img-cover"
-                  />
+                  {data.postImage === undefined || loading ? (
+                    <PostSkeleton />
+                  ) : (
+                    <LazyImage
+                      src={`http://localhost:4000${data?.postImage}`}
+                      alt="user post"
+                      className="lg:h-[34rem] cursor-pointer img-cover"
+                    />
+                  )}
                 </div>
                 <div className="post-caption flex flex-col lg:mt-0 mt-8">
                   <div className="header flex mb-3 items-center ml-8">
-                    <img
-                      src={`http://localhost:4000${data?.userId?.userImage}`}
-                      alt="user post"
-                      className="rounded-full w-12 h-12 cursor-pointer img-cover"
-                    />
+                    {data?.userId?.userImage === undefined || loading ? (
+                      <UserSkeleton />
+                    ) : (
+                      <LazyImage
+                        src={`http://localhost:4000${data?.userId?.userImage}`}
+                        alt="user post"
+                        className="rounded-full w-12 h-12 cursor-pointer img-cover"
+                      />
+                    )}
                     <div>
                       <p className="lg:text-xl text-lg w-full flex font-semibold ml-4">
                         {data?.userName}

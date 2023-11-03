@@ -9,6 +9,8 @@ import { NavLink, useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { clearChat, deleteMsg } from "../../api/chatapi";
+import LazyImage from "../../components/LazyImage";
+import UserSkeleton from "../../components/skeletons/UserSkeleton";
 
 const MobileSingleChat = () => {
   const [onlineStatus, setOnlineStatus] = useState(false);
@@ -111,11 +113,15 @@ const MobileSingleChat = () => {
           <NavLink to="/chat" className="flex items-center mr-3">
             <KeyboardBackspaceIcon />
           </NavLink>
-          <img
-            src={`http://localhost:4000/${singleUser.userImage}`}
-            alt="user profile"
-            className="w-12 h-12 rounded-full cursor-pointer img-cover"
-          />
+          {singleUser.userImage === undefined ? (
+            <UserSkeleton />
+          ) : (
+            <LazyImage
+              src={`http://localhost:4000/${singleUser.userImage}`}
+              alt="user profile"
+              className="w-12 h-12 rounded-full cursor-pointer img-cover"
+            />
+          )}
           <div className="ml-4">
             <p className="font-semibold">{singleUser.username}</p>
             <p className="text-gray-500">
@@ -124,31 +130,14 @@ const MobileSingleChat = () => {
           </div>
           <div className="ml-auto flex items-center">
             <button
-              className="bg-blue-500 rounded-md hover:bg-blue-600 text-white py-1.5 px-3"
+              className="bg-blue-500 md:text-sm text-xs rounded-md hover:bg-blue-600 text-white py-1.5
+               px-3"
               onClick={clearFullChat}
             >
               Clear Chat
             </button>
           </div>
         </div>
-        {/* <div className='w-full bg-gray-100 h-[32.1rem] overflow-auto'>
-                    {messages?.map((val, i) => {
-                        return (
-                            <div key={i} className='w-full'>
-                                {val.senderId === senderId ?
-                                    <p className='bg-blue-500 text-white w-fit py-1.5 px-2 rounded-md mr-6 my-2 ml-auto'>{val.text}
-                                        <sub className='text-xs text-white pl-3'>{formatTime(val?.createdAt)}
-                                        </sub>
-                                    </p>
-                                    : <p className='bg-white w-fit py-1.5 px-2 rounded-md mx-3 my-2'>{val.text}
-                                        <sub className='text-xs text-gray-600 pl-3'>{formatTime(val?.createdAt)}
-                                        </sub>
-                                    </p>
-                                }
-                            </div>
-                        )
-                    })}
-                </div> */}
         <div className="w-full bg-gray-100 h-[32.1rem] overflow-auto">
           {messages?.map((val, i) => {
             return (
@@ -191,14 +180,6 @@ const MobileSingleChat = () => {
         </div>
         <div className="w-full border bg-white flex py-3 px-6 mt-auto">
           <div className="ml-4 flex w-full">
-            <div className="flex mr-10">
-              <button>
-                <i className="fa-regular fa-face-smile mr-10"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-paperclip"></i>
-              </button>
-            </div>
             <div>
               <input
                 type="text"

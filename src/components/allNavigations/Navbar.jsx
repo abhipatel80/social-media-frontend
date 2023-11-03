@@ -3,8 +3,8 @@ import { useState, useRef } from 'react';
 import Overlay from 'react-bootstrap/Overlay';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-import { getSearchAsync } from '../store/userSlice';
-import { logout } from '../api/userapi';
+import { getSearchAsync } from '../../store/userSlice';
+import { logout } from '../../api/userapi';
 
 const Navbar = () => {
 

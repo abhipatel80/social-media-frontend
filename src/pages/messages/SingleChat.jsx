@@ -7,9 +7,10 @@ import { formatTime } from "../../utils/formatTime";
 import { addMessage } from "../../store/msgSlice";
 import { io } from "socket.io-client";
 import { clearChat, deleteMsg } from "../../api/chatapi";
+import LazyImage from "../../components/LazyImage";
+import UserSkeleton from "../../components/skeletons/UserSkeleton";
 
-const SingleChat = ({ udata }) => {
-    
+const SingleChat = ({ udata, userLoading }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
@@ -106,11 +107,15 @@ const SingleChat = ({ udata }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="w-ful border bg-white flex py-2.5 px-6">
-        <img
-          src={`http://localhost:4000/${udata.userImage}`}
-          alt="user profile"
-          className="w-12 h-12 rounded-full cursor-pointer img-cover"
-        />
+        {udata.userImage === undefined || userLoading ? (
+          <UserSkeleton />
+        ) : (
+          <LazyImage
+            src={`http://localhost:4000/${udata.userImage}`}
+            alt="user profile"
+            className="w-12 h-12 rounded-full cursor-pointer img-cover"
+          />
+        )}
         <div className="ml-4">
           <p className="font-semibold">{udata.username}</p>
           <p className="text-gray-500">{onlineStatus ? "online" : "offline"}</p>

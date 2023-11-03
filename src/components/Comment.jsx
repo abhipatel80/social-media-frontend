@@ -1,5 +1,7 @@
 import React from "react";
 import { deleteComment } from "../api/commentapi";
+import LazyImage from "./LazyImage";
+import PostSkeleton from "./skeletons/PostSkeleton";
 
 const Comment = ({ data }) => {
   const userLocalId = localStorage.getItem("userId");
@@ -14,11 +16,15 @@ const Comment = ({ data }) => {
         return (
           <div key={id}>
             <div className="header flex mt-3 items-center ml-8">
-              <img
-                src={`http://localhost:4000${data?.postImage}`}
-                alt="user post"
-                className="rounded-full w-12 h-12 cursor-pointer img-cover"
-              />
+              {data?.postImage === undefined ? (
+                <PostSkeleton />
+              ) : (
+                <LazyImage
+                  src={`http://localhost:4000${data?.postImage}`}
+                  alt="user post"
+                  className="rounded-full w-12 h-12 cursor-pointer img-cover"
+                />
+              )}
               <div>
                 <div className="flex w-full">
                   <p className="lg:text-xl text-lg font-semibold ml-4">

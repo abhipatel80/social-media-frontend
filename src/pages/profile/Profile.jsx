@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleUserAsync } from "../../store/userSlice";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getMyPostAsync } from "../../store/postSlice";
-import FollowerDialog from "../../components/FollowerDialog";
+import FollowerDialog from "../../components/dialogs/FollowerDialog";
 import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
+import Loading from "../../components/Loading";
+import LazyImage from "../../components/LazyImage";
+import UserSkeleton from "../../components/skeletons/UserSkeleton";
 
 const Profile = () => {
   const [isFollow, setisFollow] = useState(false);
@@ -14,7 +17,7 @@ const Profile = () => {
   const { id } = useParams();
   const userId = localStorage.getItem("userId");
 
-  const { singleUser: data } = useSelector((state) => state.user);
+  const { singleUser: data, userLoading } = useSelector((state) => state.user);
   const { myPosts } = useSelector((state) => state.post);
 
   useEffect(() => {
@@ -54,16 +57,24 @@ const Profile = () => {
     // eslint-disable-next-line
   }, [data._id]);
 
+  if (userLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className="profile w-full grid justify-items-center mt-28 md:h-[33rem] h-[25rem] overflow-auto">
         <div className="profile_header flex items-center">
           <div className="img_section md:w-48 w-20 mr-4 md:mr-10">
-            <img
-              src={`http://localhost:4000/${data?.userImage}`}
-              alt="user profile"
-              className="rounded-full md:w-48 md:h-48 w-20 h-20 ml-3 img-cover"
-            />
+            {data.userImage === undefined || userLoading ? (
+              <UserSkeleton />
+            ) : (
+              <LazyImage
+                src={`http://localhost:4000/${data?.userImage}`}
+                alt="user profile"
+                className="rounded-full md:w-48 md:h-48 w-20 h-20 ml-3 img-cover"
+              />
+            )}
           </div>
           <div className="username_section">
             <div className="md:text-2xl text-xl font-semibold mb-2 ml-5 mr-10">

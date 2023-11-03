@@ -82,6 +82,7 @@ const postSlice = createSlice({
     myPosts: [],
     singlePost: {},
     followersPost: [],
+    loading: false,
   },
   reducers: {
     addNewPost: (state, action) => {
@@ -95,16 +96,34 @@ const postSlice = createSlice({
     builder.addCase(editPostAsync.fulfilled, (state, action) => {
       state.error = action.payload;
     });
+
+    builder.addCase(getPostAsync.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getMyPostAsync.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getSinglePostAsync.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getFollowersPostAsync.pending, (state, action) => {
+      state.loading = true;
+    });
+
     builder.addCase(getPostAsync.fulfilled, (state, action) => {
+      state.loading = false;
       state.allPosts = action.payload;
     });
     builder.addCase(getMyPostAsync.fulfilled, (state, action) => {
+      state.loading = false;
       state.myPosts = action.payload;
     });
     builder.addCase(getSinglePostAsync.fulfilled, (state, action) => {
+      state.loading = false;
       state.singlePost = action.payload;
     });
     builder.addCase(getFollowersPostAsync.fulfilled, (state, action) => {
+      state.loading = false;
       state.followersPost = action.payload;
     });
   },

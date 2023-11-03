@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { logout } from '../api/userapi';
+import { logout } from '../../api/userapi';
 import ExploreIcon from '@mui/icons-material/Explore';
 
 const Sidebar = () => {

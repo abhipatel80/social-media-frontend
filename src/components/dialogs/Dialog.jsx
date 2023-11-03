@@ -9,6 +9,7 @@ import { addLike, deleteLike, isLikedPost } from "../../api/likeapi";
 import LazyImage from "../LazyImage";
 import PostSkeleton from "../skeletons/PostSkeleton";
 import UserSkeleton from "../skeletons/UserSkeleton";
+import { url } from "../../api/userapi";
 
 const Dialog = ({ val }) => {
   const [comment, setcomment] = useState("");
@@ -63,7 +64,7 @@ const Dialog = ({ val }) => {
               <PostSkeleton />
             ) : (
               <LazyImage
-                src={`http://localhost:4000${val?.postImage}`}
+                src={`${url}${val?.postImage}`}
                 alt="user post"
                 className="md:w-80 md:h-48 h-40 w-40 cursor-pointer img-cover rounded-md"
               />
@@ -109,7 +110,7 @@ const Dialog = ({ val }) => {
                     <PostSkeleton />
                   ) : (
                     <LazyImage
-                      src={`http://localhost:4000${data?.postImage}`}
+                      src={`${url}${data?.postImage}`}
                       alt="user post"
                       className="lg:h-[34rem] cursor-pointer img-cover"
                     />
@@ -121,7 +122,7 @@ const Dialog = ({ val }) => {
                       <UserSkeleton />
                     ) : (
                       <LazyImage
-                        src={`http://localhost:4000${data?.userId?.userImage}`}
+                        src={`${url}${data?.userId?.userImage}`}
                         alt="user post"
                         className="rounded-full w-12 h-12 cursor-pointer img-cover"
                       />

@@ -38,7 +38,7 @@ const FollowerDialog = ({ val }) => {
                 <UserSkeleton />
               ) : (
                 <LazyImage
-                  src={`http://localhost:4000/${val.userImage}`}
+                  src={`${url}${val.userImage}`}
                   alt="User Profile"
                   className="w-10 h-10 rounded-full mr-4 img-cover"
                 />

@@ -10,6 +10,7 @@ import {
 import { addConversationAsync } from "../../store/conversationSlice";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
+import { url } from "../../api/userapi";
 
 const AllChat = () => {
   const { allUsers, searchUsers } = useSelector((state) => state.user);
@@ -74,7 +75,7 @@ const AllChat = () => {
                           <UserSkeleton />
                         ) : (
                           <LazyImage
-                            src={`http://localhost:4000/${val.userImage}`}
+                            src={`${url}${val.userImage}`}
                             alt="user profile"
                             className="w-12 h-12 rounded-full img-cover"
                           />

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const url = "https://social-media-app-backend-delta.vercel.app";
-// export const url = "http://localhost:4000";
 
 const token = localStorage.getItem("token");
 const id = localStorage.getItem("userId");

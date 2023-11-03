@@ -9,6 +9,7 @@ import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
 import Loading from "../../components/Loading";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
+import { url } from "../../api/userapi";
 
 const Profile = () => {
   const [isFollow, setisFollow] = useState(false);
@@ -70,7 +71,7 @@ const Profile = () => {
               <UserSkeleton />
             ) : (
               <LazyImage
-                src={`http://localhost:4000/${data?.userImage}`}
+                src={`${url}${data?.userImage}`}
                 alt="user profile"
                 className="rounded-full md:w-48 md:h-48 w-20 h-20 ml-3 img-cover"
               />

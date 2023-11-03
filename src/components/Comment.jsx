@@ -2,6 +2,7 @@ import React from "react";
 import { deleteComment } from "../api/commentapi";
 import LazyImage from "./LazyImage";
 import PostSkeleton from "./skeletons/PostSkeleton";
+import { url } from "../api/userapi";
 
 const Comment = ({ data }) => {
   const userLocalId = localStorage.getItem("userId");
@@ -20,7 +21,7 @@ const Comment = ({ data }) => {
                 <PostSkeleton />
               ) : (
                 <LazyImage
-                  src={`http://localhost:4000${data?.postImage}`}
+                  src={`${url}${data?.postImage}`}
                   alt="user post"
                   className="rounded-full w-12 h-12 cursor-pointer img-cover"
                 />

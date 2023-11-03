@@ -8,6 +8,7 @@ import { followUser, isUserFollow, unfollowUser } from "../api/followapi";
 import LazyImage from "./LazyImage";
 import PostSkeleton from "./skeletons/PostSkeleton";
 import UserSkeleton from "./skeletons/UserSkeleton";
+import { url } from "../api/userapi";
 
 const Post = ({ val, loading }) => {
   const [comment, setcomment] = useState();
@@ -98,7 +99,7 @@ const Post = ({ val, loading }) => {
                   <UserSkeleton />
                 ) : (
                   <LazyImage
-                    src={`http://localhost:4000/${val.userId.userImage}`}
+                    src={`${url}${val.userId.userImage}`}
                     alt="user profile"
                     className="w-10 h-10 rounded-full mr-4 img-cover"
                   />
@@ -128,7 +129,7 @@ const Post = ({ val, loading }) => {
             <PostSkeleton />
           ) : (
             <LazyImage
-              src={`http://localhost:4000/${val.postImage}`}
+              src={`${url}${val.postImage}`}
               alt="Post"
               className="w-full img-cover rounded-lg"
             />

@@ -9,6 +9,7 @@ import { io } from "socket.io-client";
 import { clearChat, deleteMsg } from "../../api/chatapi";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
+import { url } from "../../api/userapi";
 
 const SingleChat = ({ udata, userLoading }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);
@@ -111,7 +112,7 @@ const SingleChat = ({ udata, userLoading }) => {
           <UserSkeleton />
         ) : (
           <LazyImage
-            src={`http://localhost:4000/${udata.userImage}`}
+            src={`${url}${udata.userImage}`}
             alt="user profile"
             className="w-12 h-12 rounded-full cursor-pointer img-cover"
           />

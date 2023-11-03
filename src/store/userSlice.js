@@ -13,8 +13,10 @@ export const registerAsync = createAsyncThunk(
   async (formData) => {
     try {
       const data = await register(formData);
-      localStorage.setItem("token", data?.token);
-      localStorage.setItem("userId", data?.user?._id);
+      if (data.token || data.user._id) {
+        localStorage.setItem("token", data?.token);
+        localStorage.setItem("userId", data?.user?._id);
+      }
       return data;
     } catch (e) {
       return e.response.data;
@@ -25,8 +27,10 @@ export const registerAsync = createAsyncThunk(
 export const loginAsync = createAsyncThunk("user/login", async (formData) => {
   try {
     const data = await login(formData);
-    localStorage.setItem("token", data?.token);
-    localStorage.setItem("userId", data?.user?._id);
+    if (data.token || data.user._id) {
+      localStorage.setItem("token", data?.token);
+      localStorage.setItem("userId", data?.user?._id);
+    }
     return data;
   } catch (e) {
     return e.response.data;

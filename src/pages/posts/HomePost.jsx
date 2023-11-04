@@ -52,7 +52,7 @@ const HomePost = () => {
 
   return (
     <>
-      <div className="flex items-center overflow-scroll all-posts justify-center bg-gray-50 pt-60 h-[90%]">
+      <div className="flex items-center overflow-scroll all-posts justify-center bg-gray-50 pt-60 h-screen">
         <div
           className={`bg-white p-4 rounded shadow-sm ${
             followCondition ? "lg:w-[25rem]" : ""
@@ -122,7 +122,7 @@ const HomePost = () => {
                   </button>
                 )}
               </div>
-              <div className="h-[90%] overflow-scroll all-posts">
+              <div className="h-screen overflow-scroll all-posts">
                 {tabIndex === 0 &&
                   followersPost?.map((val) => {
                     return <Post val={val} key={val._id} loading={loading} />;

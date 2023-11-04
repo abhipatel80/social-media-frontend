@@ -38,7 +38,7 @@ const Explore = () => {
   }, [token]);
 
   return (
-    <div className="pt-16 bg-gray-50 h-[85%] overflow-auto">
+    <div className="pt-16 bg-gray-50 h-[90%] overflow-auto">
       {/* <InfiniteScroll
         dataLength={data.length}
         next={fetchData}

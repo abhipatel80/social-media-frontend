@@ -110,7 +110,7 @@ const MobileSingleChat = () => {
   return (
     <>
       <div className="w-full h-screen flex flex-col">
-        <div className="w-ful border bg-white flex py-2.5 px-3">
+        <div className="w-full border bg-white flex py-2.5 px-3">
           <NavLink to="/chat" className="flex items-center mr-3">
             <KeyboardBackspaceIcon />
           </NavLink>
@@ -139,7 +139,7 @@ const MobileSingleChat = () => {
             </button>
           </div>
         </div>
-        <div className="w-full bg-gray-100 h-[31rem] overflow-auto">
+        <div className="w-full bg-gray-100 h-[32.1rem] overflow-auto">
           {messages?.map((val, i) => {
             return (
               <div key={i}>

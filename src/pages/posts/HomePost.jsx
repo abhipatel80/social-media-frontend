@@ -122,7 +122,7 @@ const HomePost = () => {
                   </button>
                 )}
               </div>
-              <div className="h-[29rem] overflow-scroll all-posts">
+              <div className="h-screen overflow-scroll all-posts">
                 {tabIndex === 0 &&
                   followersPost?.map((val) => {
                     return <Post val={val} key={val._id} loading={loading} />;

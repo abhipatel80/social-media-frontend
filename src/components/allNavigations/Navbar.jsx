@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="shadow-md bg-white fixed top-0 w-full">
+      <nav className="shadow-md h-[15%] bg-white fixed top-0 w-full">
         <ul className="flex p-3">
           <NavLink to="/">
             <h2 className="md:text-2xl text-xl ml-4 cursor-pointer mr-4 mb-1 md:block hidden">

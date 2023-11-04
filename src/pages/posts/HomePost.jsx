@@ -52,7 +52,7 @@ const HomePost = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-gray-50 pt-60 h-screen">
+      <div className="flex items-center overflow-scroll all-posts justify-center bg-gray-50 pt-60 h-screen">
         <div
           className={`bg-white p-4 rounded shadow-sm ${
             followCondition ? "lg:w-[25rem]" : ""

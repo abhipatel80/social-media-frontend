@@ -70,25 +70,25 @@ const HomePost = () => {
                   allUsers?.map((val) => {
                     return (
                       <div key={val._id}>
-                        <div className="flex w-full items-center">
-                          <NavLink
-                            to={`/profile/${val._id}`}
-                            className="flex m-2 w-full items-center"
-                          >
-                            {val?.userImage?.startsWith("https") ? (
-                              <LazyImage
-                                src={`${val?.userImage}`}
-                                alt="User Profile"
-                                className="w-12 h-12 rounded-full mr-4 img-cover"
-                              />
-                            ) : (
-                              <UserSkeleton />
-                            )}
-                            <h2 className="text-lg font-semibold">
-                              {val?.username}
-                            </h2>
-                          </NavLink>
-                          {val._id === userId ? null : (
+                        {val._id === userId ? null : (
+                          <div className="flex w-full items-center">
+                            <NavLink
+                              to={`/profile/${val._id}`}
+                              className="flex m-2 w-full items-center"
+                            >
+                              {val?.userImage?.startsWith("https") ? (
+                                <LazyImage
+                                  src={`${val?.userImage}`}
+                                  alt="User Profile"
+                                  className="w-12 h-12 rounded-full mr-4 img-cover"
+                                />
+                              ) : (
+                                <UserSkeleton />
+                              )}
+                              <h2 className="text-lg font-semibold">
+                                {val?.username}
+                              </h2>
+                            </NavLink>
                             <div className="">
                               <button
                                 onClick={() => follow(val._id)}
@@ -98,8 +98,8 @@ const HomePost = () => {
                                 Follow
                               </button>
                             </div>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                     );
                   })}

@@ -71,14 +71,14 @@ const AllChat = () => {
                       onClick={() => addConversation(val._id)}
                     >
                       <div className="mr-4">
-                        {val.userImage === undefined ? (
-                          <UserSkeleton />
-                        ) : (
+                        {val.userImage.startsWith("https") ? (
                           <LazyImage
-                            src={`${url}${val.userImage}`}
+                            src={`${val.userImage}`}
                             alt="user profile"
                             className="w-12 h-12 rounded-full img-cover"
                           />
+                        ) : (
+                          <UserSkeleton />
                         )}
                       </div>
                       <div className="mr-2">

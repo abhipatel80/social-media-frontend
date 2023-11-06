@@ -67,14 +67,14 @@ const Profile = () => {
       <div className="profile w-full grid justify-items-center mt-28 md:h-[33rem] h-[25rem] overflow-auto">
         <div className="profile_header flex items-center">
           <div className="img_section md:w-48 w-20 mr-4 md:mr-10">
-            {data.userImage === undefined || userLoading ? (
-              <UserSkeleton />
-            ) : (
+            {data.userImage.startsWith("https") ? (
               <LazyImage
-                src={`${url}${data?.userImage}`}
+                src={`${data?.userImage}`}
                 alt="user profile"
                 className="rounded-full md:w-48 md:h-48 w-20 h-20 ml-3 img-cover"
               />
+            ) : (
+              <UserSkeleton />
             )}
           </div>
           <div className="username_section">

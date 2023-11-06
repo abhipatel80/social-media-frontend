@@ -35,14 +35,14 @@ const FollowerDialog = ({ val }) => {
         <NavLink to={`/profile/${val._id}`} key={val._id}>
           <div className="">
             <div className="flex items-center">
-              {val.userImage === undefined ? (
-                <UserSkeleton />
-              ) : (
+              {val.userImage.startsWith("https") ? (
                 <LazyImage
-                  src={`${url}${val.userImage}`}
+                  src={`${val.userImage}`}
                   alt="User Profile"
                   className="w-10 h-10 rounded-full mr-4 img-cover"
                 />
+              ) : (
+                <UserSkeleton />
               )}
               <h2 className="text-lg font-semibold">{val?.username}</h2>
             </div>

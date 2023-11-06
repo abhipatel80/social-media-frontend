@@ -60,14 +60,14 @@ const Dialog = ({ val }) => {
             onClick={() => getpostdata(val._id)}
             data-bs-target="#postModal"
           >
-            {val.postImage === undefined || loading ? (
-              <PostSkeleton />
-            ) : (
+            {val.postImage.startsWith("https") ? (
               <LazyImage
-                src={`${url}${val?.postImage}`}
+                src={`${val?.postImage}`}
                 alt="user post"
                 className="md:w-80 md:h-48 h-32 w-40 m-2 cursor-pointer img-cover rounded-md"
               />
+            ) : (
+              <PostSkeleton />
             )}
           </div>
           {val.userId._id === userId ? (
@@ -106,26 +106,26 @@ const Dialog = ({ val }) => {
                   >
                     <i className="fa-solid fa-circle-xmark fa-2xl"></i>
                   </div>
-                  {data.postImage === undefined || loading ? (
-                    <PostSkeleton />
-                  ) : (
+                  {data.postImage.startsWith("https") ? (
                     <LazyImage
-                      src={`${url}${data?.postImage}`}
+                      src={`${data?.postImage}`}
                       alt="user post"
                       className="lg:h-[34rem] cursor-pointer img-cover"
                     />
+                  ) : (
+                    <PostSkeleton />
                   )}
                 </div>
                 <div className="post-caption flex flex-col lg:mt-0 mt-8">
                   <div className="header flex mb-3 items-center ml-2">
-                    {data?.userId?.userImage === undefined || loading ? (
-                      <UserSkeleton />
-                    ) : (
+                    {data?.userId?.userImage.startsWith("https") ? (
                       <LazyImage
-                        src={`${url}${data?.userId?.userImage}`}
+                        src={`${data?.userId?.userImage}`}
                         alt="user post"
                         className="rounded-full w-12 h-12 cursor-pointer img-cover"
                       />
+                    ) : (
+                      <UserSkeleton />
                     )}
                     <div>
                       <p className="lg:text-xl text-lg w-full flex font-semibold ml-4">

@@ -109,7 +109,7 @@ const Navbar = () => {
                               >
                                 <div className="flex items-center md:m-3 mx-1.5 my-4">
                                   <LazyImage
-                                    src={`${url}${val.userImage}`}
+                                    src={`${val.userImage}`}
                                     alt="User Profile"
                                     className="w-10 h-10 rounded-full mr-4 img-cover"
                                   />

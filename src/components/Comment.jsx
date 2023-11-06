@@ -17,14 +17,14 @@ const Comment = ({ data }) => {
         return (
           <div key={id}>
             <div className="header flex mt-3 items-center ml-2">
-              {data?.postImage === undefined ? (
-                <PostSkeleton />
-              ) : (
+              {data?.postImage.startsWith("https") ? (
                 <LazyImage
-                  src={`${url}${data?.postImage}`}
+                  src={`${data?.postImage}`}
                   alt="user post"
                   className="rounded-full w-12 h-12 cursor-pointer img-cover"
                 />
+              ) : (
+                <PostSkeleton />
               )}
               <div>
                 <div className="flex w-full">

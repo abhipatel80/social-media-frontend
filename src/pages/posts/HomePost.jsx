@@ -7,6 +7,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { getAllUserAsync } from "../../store/userSlice";
 import { followUser } from "../../api/followapi";
 import Loading from "../../components/Loading";
+import LazyImage from "../../components/LazyImage";
+import UserSkeleton from "../../components/skeletons/UserSkeleton";
 
 const HomePost = () => {
   const dispatch = useDispatch();
@@ -72,11 +74,15 @@ const HomePost = () => {
                           to={`/profile/${val._id}`}
                           className="flex m-3"
                         >
-                          <img
-                            src={`http://localhost:4000/${val.userImage}`}
-                            alt="User Profile"
-                            className="w-10 h-10 rounded-full mr-4 img-cover"
-                          />
+                          {val?.userImage.startsWith("https") ? (
+                            <LazyImage
+                              src={`${val.userImage}`}
+                              alt="User Profile"
+                              className="w-10 h-10 rounded-full mr-4 img-cover"
+                            />
+                          ) : (
+                            <UserSkeleton />
+                          )}
                           <h2 className="text-lg font-semibold">
                             {val?.username}
                           </h2>

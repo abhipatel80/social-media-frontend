@@ -114,14 +114,14 @@ const MobileSingleChat = () => {
           <NavLink to="/chat" className="flex items-center mr-3">
             <KeyboardBackspaceIcon />
           </NavLink>
-          {singleUser.userImage === undefined ? (
-            <UserSkeleton />
-          ) : (
+          {singleUser.userImage.startsWith("https") ? (
             <LazyImage
-              src={`${url}${singleUser.userImage}`}
+              src={`${singleUser.userImage}`}
               alt="user profile"
               className="w-12 h-12 rounded-full cursor-pointer img-cover"
             />
+          ) : (
+            <UserSkeleton />
           )}
           <div className="ml-4">
             <p className="font-semibold">{singleUser.username}</p>

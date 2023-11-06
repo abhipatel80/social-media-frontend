@@ -108,14 +108,14 @@ const SingleChat = ({ udata, userLoading }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="w-ful border bg-white flex py-2.5 px-6">
-        {udata.userImage === undefined || userLoading ? (
-          <UserSkeleton />
-        ) : (
+        {udata.userImage.startsWith("https") ? (
           <LazyImage
-            src={`${url}${udata.userImage}`}
+            src={`${udata.userImage}`}
             alt="user profile"
             className="w-12 h-12 rounded-full cursor-pointer img-cover"
           />
+        ) : (
+          <UserSkeleton />
         )}
         <div className="ml-4">
           <p className="font-semibold">{udata.username}</p>

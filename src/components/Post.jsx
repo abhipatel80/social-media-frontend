@@ -95,14 +95,14 @@ const Post = ({ val, loading }) => {
           <div className="flex items-center justify-between md:p-4 p-2.5">
             <NavLink to={`/profile/${val?.userId._id}`}>
               <div className="flex items-center">
-                {val.userId.userImage === undefined || loading ? (
-                  <UserSkeleton />
-                ) : (
+                {val.userId.userImage.startsWith("https") ? (
                   <LazyImage
-                    src={`${url}${val.userId.userImage}`}
+                    src={`${val.userId.userImage}`}
                     alt="user profile"
                     className="w-10 h-10 rounded-full md:mr-4 mr-3 img-cover"
                   />
+                ) : (
+                  <UserSkeleton />
                 )}
                 <h2 className="text-lg font-semibold ml-1">{val?.userName}</h2>
               </div>
@@ -125,14 +125,14 @@ const Post = ({ val, loading }) => {
               </button>
             )}
           </div>
-          {val.postImage === undefined || loading ? (
-            <PostSkeleton />
-          ) : (
+          {val.postImage.startsWith("https") ? (
             <LazyImage
-              src={`${url}${val.postImage}`}
+              src={`${val.postImage}`}
               alt="Post"
               className="w-full h-64 max-h-72 img-cover md:rounded-lg rounded-sm"
             />
+          ) : (
+            <PostSkeleton />
           )}
           <div className="px-4 py-2">
             <div className="flex flex-col">

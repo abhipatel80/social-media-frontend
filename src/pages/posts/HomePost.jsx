@@ -72,7 +72,7 @@ const HomePost = () => {
                       <div className="flex items-center w-full">
                         <NavLink
                           to={`/profile/${val._id}`}
-                          className="flex m-2"
+                          className="flex m-2 w-full items-center"
                         >
                           {val?.userImage?.startsWith("https") ? (
                             <LazyImage

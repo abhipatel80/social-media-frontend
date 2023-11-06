@@ -65,7 +65,7 @@ const HomePost = () => {
               <h2 className="text-xl font-semibold">
                 Follow your favourite person
               </h2>
-              <div className="flex items-center h-full w-full justify-center">
+              <div className="">
                 {allUsers &&
                   allUsers?.map((val) => {
                     return (

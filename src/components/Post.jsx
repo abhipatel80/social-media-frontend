@@ -128,7 +128,7 @@ const Post = ({ val, loading }) => {
             <LazyImage
               src={`${val?.postImage}`}
               alt="Post"
-              className="w-64 h-64 max-h-72 img-cover md:rounded-lg rounded-sm"
+              className="w-full h-full img-cover md:rounded-lg rounded-sm"
             />
           ) : (
             <PostSkeleton />

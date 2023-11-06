@@ -49,7 +49,7 @@ const MobileSingleChat = () => {
     dispatch(getConversationAsync({ senderId, receiverId }));
     dispatch(getMessageAsync(conversationId));
     // eslint-disable-next-line
-  }, [conversationId, newmessage, senderId, receiverId]);
+  }, [conversationId, senderId, receiverId]);
 
   useEffect(() => {
     setnewmessage(false);

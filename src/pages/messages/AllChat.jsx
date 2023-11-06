@@ -10,7 +10,6 @@ import {
 import { addConversationAsync } from "../../store/conversationSlice";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const AllChat = () => {
   const { allUsers, searchUsers } = useSelector((state) => state.user);

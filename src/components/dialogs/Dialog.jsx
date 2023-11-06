@@ -14,7 +14,7 @@ const Dialog = ({ val }) => {
   const [comment, setcomment] = useState("");
   const [isLike, setisLike] = useState(false);
 
-  const { singlePost: data, loading } = useSelector((state) => state.post);
+  const { singlePost: data } = useSelector((state) => state.post);
 
   const dispatch = useDispatch();
 

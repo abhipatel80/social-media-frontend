@@ -3,24 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import Post from "../../components/Post";
 import { getLikedPostsAsync } from "../../store/likeSlice";
 import { getFollowersPostAsync } from "../../store/postSlice";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAllUserAsync } from "../../store/userSlice";
-import { followUser } from "../../api/followapi";
 import Loading from "../../components/Loading";
-import LazyImage from "../../components/LazyImage";
-import UserSkeleton from "../../components/skeletons/UserSkeleton";
+import FollowSuggestions from "../../components/FollowSuggestions";
 
 const HomePost = () => {
   const dispatch = useDispatch();
   const { likedPost } = useSelector((state) => state.like);
   const { followersPost, loading } = useSelector((state) => state.post);
   const { allUsers } = useSelector((state) => state.user);
-
-  const userId = localStorage.getItem("userId");
-
-  const follow = async (id) => {
-    await followUser({ followerId: userId, followingId: id });
-  };
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -56,7 +48,7 @@ const HomePost = () => {
     <>
       <div
         className={`flex items-center overflow-scroll all-posts justify-center bg-gray-50 ${
-          followCondition ? "pt-28" : "pt-60"
+          followCondition ? "pt-10" : "pt-60"
         } h-screen`}
       >
         <div
@@ -72,40 +64,7 @@ const HomePost = () => {
               <div className="">
                 {allUsers &&
                   allUsers?.map((val) => {
-                    return (
-                      <div key={val._id}>
-                        {val._id === userId ? null : (
-                          <div className="flex w-full items-center">
-                            <NavLink
-                              to={`/profile/${val._id}`}
-                              className="flex m-2 w-full items-center"
-                            >
-                              {val?.userImage?.startsWith("https") ? (
-                                <LazyImage
-                                  src={`${val?.userImage}`}
-                                  alt="User Profile"
-                                  className="w-12 h-12 rounded-full mr-4 img-cover"
-                                />
-                              ) : (
-                                <UserSkeleton />
-                              )}
-                              <h2 className="text-lg font-semibold">
-                                {val?.username}
-                              </h2>
-                            </NavLink>
-                            <div className="">
-                              <button
-                                onClick={() => follow(val._id)}
-                                className="ml-auto font-normal tracking-wide bg-blue-600 hover:bg-blue-700
-                        text-white text-xs rounded-md py-1.5 px-3"
-                              >
-                                Follow
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
+                    return <FollowSuggestions val={val} />;
                   })}
               </div>
             </>

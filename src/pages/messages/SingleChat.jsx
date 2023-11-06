@@ -9,7 +9,6 @@ import { io } from "socket.io-client";
 import { clearChat, deleteMsg } from "../../api/chatapi";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const SingleChat = ({ udata, userLoading }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);

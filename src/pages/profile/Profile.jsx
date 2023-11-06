@@ -9,7 +9,6 @@ import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
 import Loading from "../../components/Loading";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const Profile = () => {
   const [isFollow, setisFollow] = useState(false);

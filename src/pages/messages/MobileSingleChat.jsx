@@ -11,7 +11,6 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { clearChat, deleteMsg } from "../../api/chatapi";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const MobileSingleChat = () => {
   const [onlineStatus, setOnlineStatus] = useState(false);

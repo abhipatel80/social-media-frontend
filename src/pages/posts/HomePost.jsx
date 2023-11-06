@@ -65,46 +65,45 @@ const HomePost = () => {
               <h2 className="text-xl font-semibold">
                 Follow your favourite person
               </h2>
-              {allUsers &&
-                allUsers?.map((val) => {
-                  return (
-                    <div key={val._id}>
-                      <div className="flex mt-8 w-full">
-                        <NavLink
-                          to={`/profile/${val._id}`}
-                          className="flex m-2 w-full items-center"
-                        >
-                          {val?.userImage?.startsWith("https") ? (
-                            <LazyImage
-                              src={`${val?.userImage}`}
-                              alt="User Profile"
-                              className="w-12 h-12 rounded-full mr-4 img-cover"
-                            />
-                          ) : (
-                            <UserSkeleton />
-                          )}
-                          <h2 className="text-lg font-semibold">
-                            {val?.username}
-                          </h2>
-                        </NavLink>
-                        {val._id === userId ? null : (
-                          <div className="flex w-full">
-                            <button
-                              onClick={() => follow(val._id)}
-                              className="ml-auto font-normal tracking-wide bg-blue-600 hover:bg-blue-700
+              <div className="flex items-center h-full w-full justify-center">
+                {allUsers &&
+                  allUsers?.map((val) => {
+                    return (
+                      <div key={val._id}>
+                        <div className="flex w-full">
+                          <NavLink
+                            to={`/profile/${val._id}`}
+                            className="flex m-1.5 w-full items-center"
+                          >
+                            {val?.userImage?.startsWith("https") ? (
+                              <LazyImage
+                                src={`${val?.userImage}`}
+                                alt="User Profile"
+                                className="w-12 h-12 rounded-full mr-4 img-cover"
+                              />
+                            ) : (
+                              <UserSkeleton />
+                            )}
+                            <h2 className="text-lg font-semibold">
+                              {val?.username}
+                            </h2>
+                          </NavLink>
+                          {val._id === userId ? null : (
+                            <div className="">
+                              <button
+                                onClick={() => follow(val._id)}
+                                className="ml-auto font-normal tracking-wide bg-blue-600 hover:bg-blue-700
                         text-white text-xs rounded-md py-1.5 px-3"
-                            >
-                              <span>
-                                <i className="fa-solid fa-plus mr-1.5"></i>
-                              </span>
-                              Follow
-                            </button>
-                          </div>
-                        )}
+                              >
+                                Follow
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+              </div>
             </>
           ) : (
             <>

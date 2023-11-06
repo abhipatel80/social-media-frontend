@@ -8,7 +8,6 @@ import { followUser, isUserFollow, unfollowUser } from "../api/followapi";
 import LazyImage from "./LazyImage";
 import PostSkeleton from "./skeletons/PostSkeleton";
 import UserSkeleton from "./skeletons/UserSkeleton";
-import { url } from "../api/userapi";
 
 const Post = ({ val, loading }) => {
   const [comment, setcomment] = useState();
@@ -95,9 +94,9 @@ const Post = ({ val, loading }) => {
           <div className="flex items-center justify-between md:p-4 p-2.5">
             <NavLink to={`/profile/${val?.userId._id}`}>
               <div className="flex items-center">
-                {val.userId.userImage.startsWith("https") ? (
+                {val?.userId?.userImage?.startsWith("https") ? (
                   <LazyImage
-                    src={`${val.userId.userImage}`}
+                    src={`${val?.userId?.userImage}`}
                     alt="user profile"
                     className="w-10 h-10 rounded-full md:mr-4 mr-3 img-cover"
                   />
@@ -125,9 +124,9 @@ const Post = ({ val, loading }) => {
               </button>
             )}
           </div>
-          {val.postImage.startsWith("https") ? (
+          {val?.postImage?.startsWith("https") ? (
             <LazyImage
-              src={`${val.postImage}`}
+              src={`${val?.postImage}`}
               alt="Post"
               className="w-full h-64 max-h-72 img-cover md:rounded-lg rounded-sm"
             />

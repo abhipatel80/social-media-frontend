@@ -4,8 +4,9 @@ import Overlay from "react-bootstrap/Overlay";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getSearchAsync } from "../../store/userSlice";
-import { logout, url } from "../../api/userapi";
+import { logout } from "../../api/userapi";
 import LazyImage from "../LazyImage";
+import UserSkeleton from "../skeletons/UserSkeleton";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -108,11 +109,15 @@ const Navbar = () => {
                                 onClick={() => setShow(false)}
                               >
                                 <div className="flex items-center md:m-3 mx-1.5 my-4">
-                                  <LazyImage
-                                    src={`${val.userImage}`}
-                                    alt="User Profile"
-                                    className="w-10 h-10 rounded-full mr-4 img-cover"
-                                  />
+                                  {val?.userImage?.startsWith("https") ? (
+                                    <LazyImage
+                                      src={`${val?.userImage}`}
+                                      alt="User Profile"
+                                      className="w-10 h-10 rounded-full mr-4 img-cover"
+                                    />
+                                  ) : (
+                                    <UserSkeleton />
+                                  )}
                                   <h2 className="text-lg font-semibold">
                                     {val?.username}
                                   </h2>

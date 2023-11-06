@@ -2,7 +2,6 @@ import React from "react";
 import { deleteComment } from "../api/commentapi";
 import LazyImage from "./LazyImage";
 import PostSkeleton from "./skeletons/PostSkeleton";
-import { url } from "../api/userapi";
 
 const Comment = ({ data }) => {
   const userLocalId = localStorage.getItem("userId");
@@ -17,7 +16,7 @@ const Comment = ({ data }) => {
         return (
           <div key={id}>
             <div className="header flex mt-3 items-center ml-2">
-              {data?.postImage.startsWith("https") ? (
+              {data?.postImage?.startsWith("https") ? (
                 <LazyImage
                   src={`${data?.postImage}`}
                   alt="user post"

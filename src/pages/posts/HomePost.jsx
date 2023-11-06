@@ -74,9 +74,9 @@ const HomePost = () => {
                           to={`/profile/${val._id}`}
                           className="flex m-3"
                         >
-                          {val?.userImage.startsWith("https") ? (
+                          {val?.userImage?.startsWith("https") ? (
                             <LazyImage
-                              src={`${val.userImage}`}
+                              src={`${val?.userImage}`}
                               alt="User Profile"
                               className="w-10 h-10 rounded-full mr-4 img-cover"
                             />

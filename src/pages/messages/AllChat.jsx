@@ -71,9 +71,9 @@ const AllChat = () => {
                       onClick={() => addConversation(val._id)}
                     >
                       <div className="mr-4">
-                        {val.userImage.startsWith("https") ? (
+                        {val?.userImage?.startsWith("https") ? (
                           <LazyImage
-                            src={`${val.userImage}`}
+                            src={`${val?.userImage}`}
                             alt="user profile"
                             className="w-12 h-12 rounded-full img-cover"
                           />

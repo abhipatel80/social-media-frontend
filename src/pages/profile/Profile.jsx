@@ -67,7 +67,7 @@ const Profile = () => {
       <div className="profile w-full grid justify-items-center mt-28 md:h-[33rem] h-[25rem] overflow-auto">
         <div className="profile_header flex items-center">
           <div className="img_section md:w-48 w-20 mr-4 md:mr-10">
-            {data.userImage.startsWith("https") ? (
+            {data?.userImage?.startsWith("https") ? (
               <LazyImage
                 src={`${data?.userImage}`}
                 alt="user profile"

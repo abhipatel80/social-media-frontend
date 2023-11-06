@@ -9,7 +9,6 @@ import { addLike, deleteLike, isLikedPost } from "../../api/likeapi";
 import LazyImage from "../LazyImage";
 import PostSkeleton from "../skeletons/PostSkeleton";
 import UserSkeleton from "../skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const Dialog = ({ val }) => {
   const [comment, setcomment] = useState("");
@@ -60,7 +59,7 @@ const Dialog = ({ val }) => {
             onClick={() => getpostdata(val._id)}
             data-bs-target="#postModal"
           >
-            {val.postImage.startsWith("https") ? (
+            {val?.postImage?.startsWith("https") ? (
               <LazyImage
                 src={`${val?.postImage}`}
                 alt="user post"
@@ -106,7 +105,7 @@ const Dialog = ({ val }) => {
                   >
                     <i className="fa-solid fa-circle-xmark fa-2xl"></i>
                   </div>
-                  {data.postImage.startsWith("https") ? (
+                  {data?.postImage?.startsWith("https") ? (
                     <LazyImage
                       src={`${data?.postImage}`}
                       alt="user post"
@@ -118,7 +117,7 @@ const Dialog = ({ val }) => {
                 </div>
                 <div className="post-caption flex flex-col lg:mt-0 mt-8">
                   <div className="header flex mb-3 items-center ml-2">
-                    {data?.userId?.userImage.startsWith("https") ? (
+                    {data?.userId?.userImage?.startsWith("https") ? (
                       <LazyImage
                         src={`${data?.userId?.userImage}`}
                         alt="user post"

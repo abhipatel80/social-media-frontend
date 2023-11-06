@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
 import LazyImage from "../LazyImage";
 import UserSkeleton from "../skeletons/UserSkeleton";
-import { url } from "../../api/userapi";
 
 const FollowerDialog = ({ val }) => {
   const [isFollow, setisFollow] = useState(false);
@@ -35,9 +34,9 @@ const FollowerDialog = ({ val }) => {
         <NavLink to={`/profile/${val._id}`} key={val._id}>
           <div className="">
             <div className="flex items-center">
-              {val.userImage.startsWith("https") ? (
+              {val?.userImage?.startsWith("https") ? (
                 <LazyImage
-                  src={`${val.userImage}`}
+                  src={`${val?.userImage}`}
                   alt="User Profile"
                   className="w-10 h-10 rounded-full mr-4 img-cover"
                 />

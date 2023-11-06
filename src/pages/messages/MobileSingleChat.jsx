@@ -70,11 +70,14 @@ const MobileSingleChat = () => {
   }, [dispatch, conversationId, newmessage]);
 
   const sendmsg = () => {
-    setnewmessage(false);
-    dispatch(addMessageAsync(formData));
-    socket.emit("sendmsg", formData);
-    setnewmessage(true);
-    setmessage("");
+    if (message === "") return;
+    else {
+      setnewmessage(false);
+      dispatch(addMessageAsync(formData));
+      socket.emit("sendmsg", formData);
+      setnewmessage(true);
+      setmessage("");
+    }
   };
 
   // online / offline status user

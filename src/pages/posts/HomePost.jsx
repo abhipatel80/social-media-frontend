@@ -69,16 +69,16 @@ const HomePost = () => {
                 allUsers?.map((val) => {
                   return (
                     <div key={val._id}>
-                      <div className="flex items-center">
+                      <div className="flex items-center w-full">
                         <NavLink
                           to={`/profile/${val._id}`}
-                          className="flex m-3"
+                          className="flex m-2 w-full"
                         >
                           {val?.userImage?.startsWith("https") ? (
                             <LazyImage
                               src={`${val?.userImage}`}
                               alt="User Profile"
-                              className="w-10 h-10 rounded-full mr-4 img-cover"
+                              className="w-12 h-12 rounded-full mr-4 img-cover"
                             />
                           ) : (
                             <UserSkeleton />

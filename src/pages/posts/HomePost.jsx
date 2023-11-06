@@ -69,7 +69,7 @@ const HomePost = () => {
                 allUsers?.map((val) => {
                   return (
                     <div key={val._id}>
-                      <div className="flex items-center w-full">
+                      <div className="flex mt-8 w-full">
                         <NavLink
                           to={`/profile/${val._id}`}
                           className="flex m-2 w-full items-center"
@@ -87,18 +87,20 @@ const HomePost = () => {
                             {val?.username}
                           </h2>
                         </NavLink>
-                        <div className="flex w-full">
-                          <button
-                            onClick={() => follow(val._id)}
-                            className="ml-auto font-normal tracking-wide bg-blue-600 hover:bg-blue-700
+                        {val._id === userId ? null : (
+                          <div className="flex w-full">
+                            <button
+                              onClick={() => follow(val._id)}
+                              className="ml-auto font-normal tracking-wide bg-blue-600 hover:bg-blue-700
                         text-white text-xs rounded-md py-1.5 px-3"
-                          >
-                            <span>
-                              <i className="fa-solid fa-plus mr-1.5"></i>
-                            </span>
-                            Follow
-                          </button>
-                        </div>
+                            >
+                              <span>
+                                <i className="fa-solid fa-plus mr-1.5"></i>
+                              </span>
+                              Follow
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   );

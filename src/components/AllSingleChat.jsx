@@ -96,9 +96,6 @@ const AllSingleChat = ({ udata }) => {
     handleUserConnected();
     socket.on("updateOnlineUsers", (onlineUsers) => {
       const isOnline = onlineUsers.includes(udata);
-      console.log("onlineUsers", onlineUsers);
-      console.log("userId", udata);
-      console.log("isOnline", isOnline);
       setOnlineStatus(isOnline);
     });
 

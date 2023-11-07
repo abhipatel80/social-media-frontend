@@ -192,8 +192,8 @@ const AllSingleChat = ({ udata }) => {
           );
         })}
       </div>
-      <div className="w-full border bg-white flex py-3 px-6 mt-auto">
-        <div className="ml-4 flex">
+      <div className="border bg-white flex py-3 px-6 mt-auto">
+        <div className="ml-4 flex w-auto">
           <div>
             <input
               type="text"

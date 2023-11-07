@@ -10,6 +10,8 @@ import { clearChat, deleteMsg } from "../api/chatapi";
 import LazyImage from "./LazyImage";
 import UserSkeleton from "./skeletons/UserSkeleton";
 import { getSingleUserAsync } from "../store/userSlice";
+import { NavLink } from "react-router-dom";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 const AllSingleChat = ({ udata }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);
@@ -96,7 +98,7 @@ const AllSingleChat = ({ udata }) => {
       socket.disconnect();
     };
     // eslint-disable-next-line
-  }, [conversationId, newmessage]);
+  }, [conversationId, newmessage, udata]);
 
   const delmsg = async (id) => {
     setnewmessage(false);
@@ -113,6 +115,9 @@ const AllSingleChat = ({ udata }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="w-ful border bg-white flex py-2.5 px-6">
+        <NavLink to="/chat" className="flex items-center mr-3 md:hidden">
+          <KeyboardBackspaceIcon />
+        </NavLink>
         {singleUser?.userImage?.startsWith("https") ? (
           <LazyImage
             src={`${singleUser?.userImage}`}

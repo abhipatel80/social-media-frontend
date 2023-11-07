@@ -84,7 +84,7 @@ const AllChat = () => {
                         <h2 className="text-sm font-semibold">
                           {val.username}
                         </h2>
-                        <p className="text-gray-500 text-sm">Interwave</p>
+                        <p className="text-gray-500 text-sm font-light">Interwave</p>
                       </div>
                       <div className="text-xs text-gray-500 ml-auto">
                         <p>24-10-2023</p>

@@ -18,7 +18,7 @@ const AllSingleChat = ({ udata }) => {
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
   const skt = useRef();
-  skt.current = io("wss://social-media-app-backend-delta.vercel.app");
+  skt.current = io("http://localhost:4000");
 
   const socket = skt.current;
 

@@ -86,9 +86,6 @@ const AllChat = () => {
                         </h2>
                         <p className="text-gray-500 text-sm font-light">Interwave</p>
                       </div>
-                      <div className="text-xs text-gray-500 font-light ml-auto">
-                        <p>24-10-2023</p>
-                      </div>
                     </div>
                   </NavLink>
                 )}

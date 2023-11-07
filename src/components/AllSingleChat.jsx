@@ -18,7 +18,7 @@ const AllSingleChat = ({ udata }) => {
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
   const skt = useRef();
-  skt.current = io("ws://localhost:4000");
+  skt.current = io("https://social-media-app-backend-delta.vercel.app");
 
   const socket = skt.current;
 
@@ -46,6 +46,7 @@ const AllSingleChat = ({ udata }) => {
 
   useEffect(() => {
     dispatch(getSingleUserAsync(udata));
+    // eslint-disable-next-line
   }, [udata]);
 
   useEffect(() => {

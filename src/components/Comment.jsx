@@ -16,9 +16,9 @@ const Comment = ({ data }) => {
         return (
           <div key={id}>
             <div className="header flex mt-3 items-center ml-2">
-              {data?.postImage?.startsWith("https") ? (
+              {data?.userId?.userImage?.startsWith("https") ? (
                 <LazyImage
-                  src={`${data?.postImage}`}
+                  src={`${data?.userId?.userImage}`}
                   alt="user post"
                   className="rounded-full w-12 h-12 cursor-pointer img-cover"
                 />

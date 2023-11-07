@@ -10,7 +10,7 @@ import { clearChat, deleteMsg } from "../../api/chatapi";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
 
-const SingleChat = ({ udata, userLoading }) => {
+const SingleChat = ({ udata }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
@@ -44,7 +44,7 @@ const SingleChat = ({ udata, userLoading }) => {
     dispatch(getConversationAsync({ senderId, receiverId }));
     dispatch(getMessageAsync(conversationId));
     // eslint-disable-next-line
-  }, [conversationId, senderId, receiverId]);
+  }, [conversationId, senderId, receiverId, newmessage]);
 
   useEffect(() => {
     setnewmessage(false);

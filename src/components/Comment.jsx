@@ -15,10 +15,12 @@ const Comment = ({ data }) => {
       {data?.comments?.map((comment, id) => {
         return (
           <div key={id}>
+          {comment.userImage}
+          {comment.userId}
             <div className="header flex mt-3 items-center ml-2">
-              {data?.userId?.userImage?.startsWith("https") ? (
+              {comment?.userId?.userImage?.startsWith("https") ? (
                 <LazyImage
-                  src={`${data?.userId?.userImage}`}
+                  src={`${comment?.userId?.userImage}`}
                   alt="user post"
                   className="rounded-full w-12 h-12 cursor-pointer img-cover"
                 />

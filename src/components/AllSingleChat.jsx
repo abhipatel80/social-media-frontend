@@ -92,6 +92,9 @@ const AllSingleChat = ({ udata }) => {
     handleUserConnected();
     socket.on("updateOnlineUsers", (onlineUsers) => {
       const isOnline = onlineUsers.includes(udata);
+      console.log("onlineUsers", onlineUsers);
+      console.log("userId", udata);
+      console.log("isOnline", isOnline);
       setOnlineStatus(isOnline);
     });
 
@@ -99,7 +102,7 @@ const AllSingleChat = ({ udata }) => {
       socket.disconnect();
     };
     // eslint-disable-next-line
-  }, [conversationId, newmessage, udata]);
+  }, [conversationId, udata]);
 
   const delmsg = async (id) => {
     setnewmessage(false);

@@ -69,6 +69,12 @@ const AddPost = () => {
               name="image"
               id="image"
             />
+            <p className="md:text-sm text-xs">
+              postImage size should not exceed 2 MB.
+            </p>
+            <p className="md:text-sm text-xs">
+              Only JPG and PNG file formats are supported
+            </p>
           </div>
           <button
             type="submit"

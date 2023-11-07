@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MyPost from "../../components/MyPost";
+import MyPost from "../../components/postsComponent/MyPost";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleUserAsync } from "../../store/userSlice";
 import { NavLink, useNavigate, useParams } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React from "react";
-import Dialog from "./dialogs/Dialog";
+import Dialog from "../dialogs/Dialog";
 import { useSelector } from "react-redux";
 
 const MyPost = () => {

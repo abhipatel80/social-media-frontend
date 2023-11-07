@@ -51,6 +51,10 @@ const AllSingleChat = ({ udata }) => {
 
   useEffect(() => {
     dispatch(getConversationAsync({ senderId, receiverId }));
+    // eslint-disable-next-line
+  }, [senderId, receiverId]);
+
+  useEffect(() => {
     dispatch(getMessageAsync(conversationId));
     // eslint-disable-next-line
   }, [conversationId, senderId, receiverId, newmessage]);

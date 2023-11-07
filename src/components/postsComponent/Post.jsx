@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { addCommentAsync } from "../store/commentSlice";
+import { addCommentAsync } from "../../store/commentSlice";
 import { useDispatch } from "react-redux";
-import { addLike, deleteLike, isLikedPost } from "../api/likeapi";
-import { deleteComment } from "../api/commentapi";
+import { addLike, deleteLike, isLikedPost } from "../../api/likeapi";
+import { deleteComment } from "../../api/commentapi";
 import { NavLink, useNavigate } from "react-router-dom";
-import { followUser, isUserFollow, unfollowUser } from "../api/followapi";
-import LazyImage from "./LazyImage";
-import PostSkeleton from "./skeletons/PostSkeleton";
-import UserSkeleton from "./skeletons/UserSkeleton";
+import { followUser, isUserFollow, unfollowUser } from "../../api/followapi";
+import LazyImage from "../LazyImage";
+import PostSkeleton from "../skeletons/PostSkeleton";
+import UserSkeleton from "../skeletons/UserSkeleton";
 
 const Post = ({ val, loading }) => {
   const [comment, setcomment] = useState();

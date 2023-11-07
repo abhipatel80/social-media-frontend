@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Post from "../../components/Post";
+import Post from "../../components/postsComponent/Post";
 import { getLikedPostsAsync } from "../../store/likeSlice";
 import { getFollowersPostAsync } from "../../store/postSlice";
 import { useNavigate } from "react-router-dom";

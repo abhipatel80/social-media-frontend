@@ -70,10 +70,7 @@ const AddPost = () => {
               id="image"
             />
             <p className="md:text-sm text-xs">
-              postImage size should not exceed 2 MB.
-            </p>
-            <p className="md:text-sm text-xs">
-              Only JPG and PNG file formats are supported
+              Upload an image (JPG or PNG) with a maximum size of 2 MB.
             </p>
           </div>
           <button

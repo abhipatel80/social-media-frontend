@@ -170,7 +170,7 @@ const AllSingleChat = ({ udata }) => {
                   ) : (
                     ""
                   )}
-                  <p className="bg-blue-500 max-w-[20rem] text-white py-1.5 px-2 rounded-md my-1.5">
+                  <p className="bg-blue-500 max-w-[20rem] md:max-w-[25rem] text-white py-1.5 px-2 rounded-md my-1.5">
                     {val.text}
                     <sub className="text-small text-white pl-3">
                       {formatTime(val?.createdAt)}
@@ -193,14 +193,14 @@ const AllSingleChat = ({ udata }) => {
         })}
       </div>
       <div className="w-full border bg-white flex py-3 px-6 mt-auto">
-        <div className="ml-4 flex w-full">
+        <div className="ml-4 flex">
           <div>
             <input
               type="text"
               value={message}
               onChange={(e) => setmessage(e.target.value)}
               placeholder="Type a message"
-              className="outline-none"
+              className="outline-none flex-grow"
             />
           </div>
           <div className="ml-auto">

@@ -100,7 +100,7 @@
 .all-chats::-webkit-scrollbar {
   display: none;
 }
-.text-small{
+.text-small {
   font-size: 11px;
 }
 .skeleton-loader {
@@ -116,4 +116,11 @@
   100% {
     background-position: -200% 0;
   }
+}
+
+.active {
+  font-weight: 500;
+}
+.inactive {
+  font-weight: normal;
 }

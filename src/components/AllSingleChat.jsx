@@ -18,7 +18,7 @@ const AllSingleChat = ({ udata }) => {
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
   const skt = useRef();
-  skt.current = io("http://localhost:4000");
+  skt.current = io("ws://localhost:4000");
 
   const socket = skt.current;
 

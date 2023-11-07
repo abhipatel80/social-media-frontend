@@ -11,107 +11,108 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { clearChat, deleteMsg } from "../../api/chatapi";
 import LazyImage from "../../components/LazyImage";
 import UserSkeleton from "../../components/skeletons/UserSkeleton";
+import AllSingleChat from "../../components/AllSingleChat";
 
 const MobileSingleChat = () => {
-  const [onlineStatus, setOnlineStatus] = useState(false);
-  const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+  // const [onlineStatus, setOnlineStatus] = useState(false);
+  // const [showDeleteIcon, setShowDeleteIcon] = useState(false);
 
   const { id } = useParams();
 
-  const { singleUser } = useSelector((state) => state.user);
+  // const { singleUser } = useSelector((state) => state.user);
 
-  const skt = useRef();
-  skt.current = io("ws://localhost:4000");
+  // const skt = useRef();
+  // skt.current = io("ws://localhost:4000");
 
-  const socket = skt.current;
+  // const socket = skt.current;
 
-  const { conversationData } = useSelector((state) => state.conversation);
-  const { messages } = useSelector((state) => state.msg);
+  // const { conversationData } = useSelector((state) => state.conversation);
+  // const { messages } = useSelector((state) => state.msg);
 
-  const [message, setmessage] = useState("");
-  const [newmessage, setnewmessage] = useState(false);
-  const receiverId = id;
-  const senderId = localStorage.getItem("userId");
-  const type = "text";
-  const conversationId = conversationData?._id;
+  // const [message, setmessage] = useState("");
+  // const [newmessage, setnewmessage] = useState(false);
+  // const receiverId = id;
+  // const senderId = localStorage.getItem("userId");
+  // const type = "text";
+  // const conversationId = conversationData?._id;
 
-  const formData = {
-    senderId,
-    receiverId,
-    type,
-    conversationId,
-    text: message,
-  };
+  // const formData = {
+  //   senderId,
+  //   receiverId,
+  //   type,
+  //   conversationId,
+  //   text: message,
+  // };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getConversationAsync({ senderId, receiverId }));
-    dispatch(getMessageAsync(conversationId));
-    // eslint-disable-next-line
-  }, [conversationId, senderId, receiverId, newmessage]);
+  // useEffect(() => {
+  //   dispatch(getConversationAsync({ senderId, receiverId }));
+  //   dispatch(getMessageAsync(conversationId));
+  //   // eslint-disable-next-line
+  // }, [conversationId, senderId, receiverId, newmessage]);
 
-  useEffect(() => {
-    setnewmessage(false);
-    socket.on("msg", (data) => {
-      dispatch(
-        addMessage({
-          ...data,
-          createdAt: Date.now(),
-        })
-      );
-      setnewmessage(true);
-    });
-    return () => {
-      socket.disconnect();
-    };
-    // eslint-disable-next-line
-  }, [dispatch, conversationId, newmessage]);
+  // useEffect(() => {
+  //   setnewmessage(false);
+  //   socket.on("msg", (data) => {
+  //     dispatch(
+  //       addMessage({
+  //         ...data,
+  //         createdAt: Date.now(),
+  //       })
+  //     );
+  //     setnewmessage(true);
+  //   });
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  //   // eslint-disable-next-line
+  // }, [dispatch, conversationId, newmessage]);
 
-  const sendmsg = () => {
-    if (message === "") return;
-    else {
-      setnewmessage(false);
-      dispatch(addMessageAsync(formData));
-      socket.emit("sendmsg", formData);
-      setnewmessage(true);
-      setmessage("");
-    }
-  };
+  // const sendmsg = () => {
+  //   if (message === "") return;
+  //   else {
+  //     setnewmessage(false);
+  //     dispatch(addMessageAsync(formData));
+  //     socket.emit("sendmsg", formData);
+  //     setnewmessage(true);
+  //     setmessage("");
+  //   }
+  // };
 
-  // online / offline status user
-  const handleUserConnected = () => {
-    socket.emit("userConnected", senderId);
-  };
+  // // online / offline status user
+  // const handleUserConnected = () => {
+  //   socket.emit("userConnected", senderId);
+  // };
 
-  useEffect(() => {
-    handleUserConnected();
-    socket.on("updateOnlineUsers", (onlineUsers) => {
-      const isOnline = onlineUsers.includes(id);
-      setOnlineStatus(isOnline);
-    });
+  // useEffect(() => {
+  //   handleUserConnected();
+  //   socket.on("updateOnlineUsers", (onlineUsers) => {
+  //     const isOnline = onlineUsers.includes(id);
+  //     setOnlineStatus(isOnline);
+  //   });
 
-    return () => {
-      socket.disconnect();
-    };
-    // eslint-disable-next-line
-  }, [conversationId, newmessage]);
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  //   // eslint-disable-next-line
+  // }, [conversationId, newmessage]);
 
-  const delmsg = async (id) => {
-    setnewmessage(false);
-    await deleteMsg(id);
-    setnewmessage(true);
-  };
+  // const delmsg = async (id) => {
+  //   setnewmessage(false);
+  //   await deleteMsg(id);
+  //   setnewmessage(true);
+  // };
 
-  const clearFullChat = async () => {
-    setnewmessage(false);
-    await clearChat(conversationId);
-    setnewmessage(true);
-  };
+  // const clearFullChat = async () => {
+  //   setnewmessage(false);
+  //   await clearChat(conversationId);
+  //   setnewmessage(true);
+  // };
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col">
+      {/* <div className="w-full h-screen flex flex-col">
         <div className="w-full border bg-white flex py-2.5 px-3">
           <NavLink to="/chat" className="flex items-center mr-3">
             <KeyboardBackspaceIcon />
@@ -199,7 +200,8 @@ const MobileSingleChat = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <AllSingleChat udata={id} />
     </>
   );
 };

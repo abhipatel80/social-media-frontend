@@ -25,7 +25,7 @@ const ChatMain = () => {
       </div>
       <div className="w-[70%]">
         {Object.keys(singleUser).length >= 1 ? (
-          <SingleChat udata={singleUser} userLoading={userLoading} />
+          <SingleChat udata={singleUser._id} userLoading={userLoading} />
         ) : (
           <EmptyChat />
         )}

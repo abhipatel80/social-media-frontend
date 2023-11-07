@@ -16,18 +16,20 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 const AllSingleChat = ({ udata }) => {
   const [onlineStatus, setOnlineStatus] = useState(false);
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+  const [message, setmessage] = useState("");
+  const [newmessage, setnewmessage] = useState(false);
 
+  // socket connection
   const skt = useRef();
   skt.current = io("ws://localhost:4000");
-
   const socket = skt.current;
 
+  const dispatch = useDispatch();
+
+  // get data from redux toolkit
   const { conversationData } = useSelector((state) => state.conversation);
   const { messages } = useSelector((state) => state.msg);
   const { singleUser } = useSelector((state) => state.user);
-
-  const [message, setmessage] = useState("");
-  const [newmessage, setnewmessage] = useState(false);
 
   const receiverId = udata;
   const senderId = localStorage.getItem("userId");
@@ -42,23 +44,25 @@ const AllSingleChat = ({ udata }) => {
     text: message,
   };
 
-  const dispatch = useDispatch();
-
+  // get selected user data
   useEffect(() => {
     dispatch(getSingleUserAsync(udata));
     // eslint-disable-next-line
   }, [udata]);
 
+  // get conversation
   useEffect(() => {
     dispatch(getConversationAsync({ senderId, receiverId }));
     // eslint-disable-next-line
   }, [senderId, receiverId]);
 
+  // get chat messages
   useEffect(() => {
     dispatch(getMessageAsync(conversationId));
     // eslint-disable-next-line
   }, [conversationId, senderId, receiverId, newmessage]);
 
+  // add new message comes from socket
   useEffect(() => {
     setnewmessage(false);
     socket.on("msg", (data) => {
@@ -76,6 +80,7 @@ const AllSingleChat = ({ udata }) => {
     // eslint-disable-next-line
   }, [conversationId, newmessage]);
 
+  // send msg to user
   const sendmsg = () => {
     if (message === "") return;
     else {
@@ -105,12 +110,14 @@ const AllSingleChat = ({ udata }) => {
     // eslint-disable-next-line
   }, [conversationId, udata]);
 
+  // delete single message
   const delmsg = async (id) => {
     setnewmessage(false);
     await deleteMsg(id);
     setnewmessage(true);
   };
 
+  // clear chat
   const clearFullChat = async () => {
     setnewmessage(false);
     await clearChat(conversationId);

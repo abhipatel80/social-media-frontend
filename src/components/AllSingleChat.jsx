@@ -170,7 +170,7 @@ const AllSingleChat = ({ udata }) => {
                   ) : (
                     ""
                   )}
-                  <p className="bg-blue-500 text-white py-1.5 px-2 rounded-md my-1.5">
+                  <p className="bg-blue-500 max-w-[20rem] text-white py-1.5 px-2 rounded-md my-1.5">
                     {val.text}
                     <sub className="text-small text-white pl-3">
                       {formatTime(val?.createdAt)}

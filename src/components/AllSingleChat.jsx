@@ -23,7 +23,6 @@ const AllSingleChat = ({ udata }) => {
   const { conversationData } = useSelector((state) => state.conversation);
   const { messages } = useSelector((state) => state.msg);
   const { singleUser } = useSelector((state) => state.user);
-  console.log(singleUser);
 
   const [message, setmessage] = useState("");
   const [newmessage, setnewmessage] = useState(false);
@@ -114,7 +113,7 @@ const AllSingleChat = ({ udata }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="w-ful border bg-white flex py-2.5 px-6">
-        {udata?.userImage?.startsWith("https") ? (
+        {singleUser?.userImage?.startsWith("https") ? (
           <LazyImage
             src={`${singleUser?.userImage}`}
             alt="user profile"

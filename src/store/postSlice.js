@@ -77,7 +77,7 @@ export const getFollowersPostAsync = createAsyncThunk(
 const postSlice = createSlice({
   name: "post",
   initialState: {
-    error: "",
+    error: null,
     allPosts: [],
     myPosts: [],
     singlePost: {},

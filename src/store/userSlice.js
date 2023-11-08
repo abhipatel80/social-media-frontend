@@ -87,7 +87,7 @@ const userSlice = createSlice({
   initialState: {
     allUsers: [],
     singleUser: {},
-    error: null,
+    error: "",
     searchUsers: [],
     userLoading: false,
   },
